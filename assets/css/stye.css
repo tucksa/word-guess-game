@@ -1,0 +1,15 @@
+.my-jum {
+    background-color: 	#3AB09E;
+    color: white;
+}
+.my-card {
+    background-color: 	#006D6F; 
+    color: white;
+}
+.my-spacing {
+    z-index: 1;
+}
+body {
+    background-image: url("../images/white-waves/white-waves/white-waves.png");
+    z-index: 2;
+}
