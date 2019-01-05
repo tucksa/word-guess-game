@@ -13,3 +13,6 @@ body {
     background-image: url("../images/white-waves/white-waves/white-waves.png");
     z-index: 2;
 }
+.wl {
+    font-size: 50px;
+}

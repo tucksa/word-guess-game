@@ -27,11 +27,11 @@ function playFunction () {
 
     document.addEventListener("keypress", (event) => {
         var keyword = String.fromCharCode(event.keyCode);
-        if(choosenWord.indexOf(keyword) > -1) {
+        if(choosenWord.indexOf(keyword) != -1) {
             for (var i =0; i < choosenWord.length; i++) {
                 if(choosenWord[i] === keyword) {
                     correctLetter.push(keyword);
-                    underscore[choosenWord.indexOf(keyword)] = keyword; 
+                    underscore[i] = keyword; 
                     document.getElementsByClassName("wordSelected")[0].innerHTML = underscore.join(" ");
                     document.getElementsByClassName("correct-guess")[0].innerHTML = correctLetter;
                     document.getElementById("guessCounter").innerHTML = guessCounter++;
@@ -43,15 +43,17 @@ function playFunction () {
             wrongLetter.push(keyword);
             document.getElementsByClassName("wrong-guess")[0].innerHTML = wrongLetter;
             document.getElementById("guessCounter").innerHTML = guessCounter++;
-        }
-        
-        function winLose() {
-            if (correctLetter == choosenWord.length) {
-                document.write("You WIN! Refresh to play again")
-            }else if (guessCounter == 16){
-                document.write("You Lose...Refresh to play again")
-            }
-        }
-        winLose ();
+        }   
+
     });
+    function winLose() {
+        if (correctLetter.length == choosenWord.length) {
+            document.getElementsByClassName("win-lose")[0].innerHTML = "You WIN! Refresh to play again";
+            document.getElementsByClassName("win-lose").classList.add("wl");
+        }else if (guessCounter == 16){
+            document.getElementsByClassName("win-lose")[0].innerHTML = "You Lose...Refresh to play again";      
+            document.getElementsByClassName("win-lose").classList.add("wl"); 
+        }
+    }
+    winLose ();
 }
