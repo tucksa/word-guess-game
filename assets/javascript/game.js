@@ -9,7 +9,6 @@ var choosenWord = Words[randomWord];
 var letters = choosenWord.split("");
 var underscore = [];
 var correctLetter= [];
-var wrongLetter= [];
 var guessCounter = 0;
 
 
@@ -33,27 +32,29 @@ function playFunction () {
                     correctLetter.push(keyword);
                     underscore[i] = keyword; 
                     document.getElementsByClassName("wordSelected")[0].innerHTML = underscore.join(" ");
-                    document.getElementsByClassName("correct-guess")[0].innerHTML = correctLetter;
-                    document.getElementById("guessCounter").innerHTML = guessCounter++;
                 }
             }
+            guessCounter++;
+            document.getElementById("guessCounter").innerHTML = guessCounter;
+            document.getElementsByClassName("letter-guess")[0].append(keyword);
+            console.log(guessCounter);
         
         }
         else {
-            wrongLetter.push(keyword);
-            document.getElementsByClassName("wrong-guess")[0].innerHTML = wrongLetter;
+            document.getElementsByClassName("letter-guess")[0].append(keyword);
             document.getElementById("guessCounter").innerHTML = guessCounter++;
+            console.log(guessCounter);
         }   
-
+        winLose ();
     });
     function winLose() {
         if (correctLetter.length == choosenWord.length) {
             document.getElementsByClassName("win-lose")[0].innerHTML = "You WIN! Refresh to play again";
-            document.getElementsByClassName("win-lose").classList.add("wl");
-        }else if (guessCounter == 16){
+            document.getElementById("guessCounter").innerHTML= " ";
+        }else if (guessCounter == 11){
             document.getElementsByClassName("win-lose")[0].innerHTML = "You Lose...Refresh to play again";      
-            document.getElementsByClassName("win-lose").classList.add("wl"); 
+            document.getElementById("guessCounter").innerHTML= "the word was " + choosenWord;
         }
     }
-    winLose ();
+
 }

@@ -13,6 +13,9 @@ body {
     background-image: url("../images/white-waves/white-waves/white-waves.png");
     z-index: 2;
 }
-.wl {
+.win-lose {
     font-size: 50px;
+}
+.letter-guess{
+    color: white;
 }
